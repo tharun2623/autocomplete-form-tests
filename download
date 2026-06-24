@@ -1,0 +1,128 @@
+# Autocomplete Form — Test Suite
+
+A complete test suite for the Autocomplete Form feature, covering manual test scenarios, defect analysis, UI automation (Playwright + TypeScript), and API automation (Jest + Axios).
+
+---
+
+## Project Structure
+
+```
+├── README.md
+├── docs/
+│   ├── 1-requirement-analysis.md      # Ambiguities & assumptions
+│   ├── 2-test-scenarios.md            # Top 10 ranked test scenarios
+│   ├── 3-defect-identification.md     # FR-05 discrepancies
+│   ├── 4-test-cases.md                # Detailed test cases
+│   ├── 7-ai-reflection.md             # AI tool usage reflection
+│   └── 8-architecture-discussion.md   # Architecture notes
+├── tests/
+│   ├── ui/
+│   │   ├── pages/                     # Page Object Model classes
+│   │   ├── tests/                     # Playwright test scripts
+│   │   └── config/                    # Playwright config
+│   └── api/
+│       └── tests/                     # API test scripts (Jest + Axios)
+├── package.json
+└── tsconfig.json
+```
+
+---
+
+## Prerequisites
+
+- **Node.js** v18 or higher
+- **npm** v9 or higher
+
+---
+
+## Setup
+
+```bash
+# 1. Clone the repository
+git clone <your-repo-url>
+cd autocomplete-form-tests
+
+# 2. Install dependencies
+npm install
+
+# 3. Install Playwright browsers
+npx playwright install chromium
+```
+
+---
+
+## Running Tests
+
+### UI Tests (Playwright)
+
+```bash
+# Run all UI tests
+npm run test:ui
+
+# Run with browser visible (headed mode)
+npm run test:ui:headed
+
+# Run with Playwright HTML report
+npm run test:ui:report
+```
+
+### API Tests (Jest + Axios)
+
+```bash
+# Run all API tests
+npm run test:api
+
+# Run with verbose output
+npm run test:api:verbose
+```
+
+### Run Everything
+
+```bash
+npm test
+```
+
+---
+
+## Environment Configuration
+
+Edit `tests/ui/config/env.ts` to change the base URL or credentials:
+
+```typescript
+export const ENV = {
+  BASE_URL: 'https://test.com',
+  LOGIN_EMAIL: 'test123@gmail.com',
+  LOGIN_PASSWORD: 'your-password-here',
+  API_BASE_URL: 'https://test.com/api',
+};
+```
+
+---
+
+## Test Coverage Summary
+
+| Area | Coverage |
+|------|----------|
+| UI — Tab/Keyboard Navigation | ✅ |
+| UI — Suggestion Filtering (prefix) | ✅ |
+| UI — Suggestion Filtering (match anywhere) | ✅ |
+| UI — Suggestion Selection | ✅ |
+| UI — Form Submission (success) | ✅ |
+| UI — Form Submission (error) | ✅ |
+| API — Schema validation | ✅ |
+| API — Data type validation | ✅ |
+| API — Locale format (BCP 47) | ✅ |
+| API — suggestion_list accuracy | ✅ |
+| API — Negative tests | ✅ |
+
+---
+
+## Dependencies
+
+| Package | Purpose |
+|---------|---------|
+| `@playwright/test` | UI end-to-end testing |
+| `jest` | API test runner |
+| `axios` | HTTP client for API tests |
+| `typescript` | Language |
+| `ts-jest` | TypeScript support in Jest |
